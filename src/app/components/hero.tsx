@@ -22,7 +22,7 @@ const Hero = () => {
             ></Image>
             <div className=" object-cover absolute top-0 left-0 w-full h-full bg-primary opacity-90"></div>
             <div className="absolute top-0 left-0 flex items-end w-full h-full">
-                <div className="w-full h-auto sticky bottom-96 rounded-xl flex items-center justify-around flex-wrap z-10">
+                <div className="w-full mt-auto sticky bottom-60 rounded-xl flex items-center justify-center flex-col gap-2 flex-wrap z-10">
                     {/* <Image
                         alt="Hero Image"
                         src="/images/logo.svg"
@@ -33,13 +33,17 @@ const Hero = () => {
                     <h1 className="text-8xl text-secondary font-extrabold">
                         Mood Coffee
                     </h1>
-                    <div className="w-auto text-justify">
-                        <p className="text-sm text-bg">
-                            <strong>Our oping hours are</strong>
-                            <br /> 7 AM to 8 PM, Monday to thursday
-                            <br /> 7 AM to 9 PM Friday
-                            <br /> 9 AM to 10 PM Saturday
-                            <br /> 9 AM to 8 PM Sunday
+                    <div className="w-fit py-6 px-4 text-justify rounded-2xl bg-white/10 backdrop-blur-lg backdrop-saturate-150 shadow-lg border border-white/20">
+                        <p className="text-sm text-white">
+                            <strong className="text-lg block mb-2">
+                                Our opening hours are
+                            </strong>
+                            7 AM to 8 PM, Monday to Thursday
+                            <br />
+                            7 AM to 9 PM Friday
+                            <br />
+                            9 AM to 10 PM Saturday
+                            <br />9 AM to 8 PM Sunday
                         </p>
                     </div>
                 </div>
