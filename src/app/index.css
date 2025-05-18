@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+body {
+    width: 100dvw;
+    background-color: #dfdff0;
+    overflow-x: hidden;
+}
+
+@theme {
+    --color-primary: #7a4d3d;
+    --color-secondary: #e6b663;
+    --color-bg: #fbf7f0;
+}
+
+@layer base {
+}
+
+@layer utilities {
+}
