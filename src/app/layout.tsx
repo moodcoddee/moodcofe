@@ -1,20 +1,27 @@
-import type { Metadata } from "next";
-import "./index.css";
+import type { Metadata } from 'next';
+import { IBM_Plex_Mono } from 'next/font/google';
+import './globals.scss';
+
+const IBM = IBM_Plex_Mono({
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700'],
+  variable: '--font-imb',
+});
 
 export const metadata: Metadata = {
-    title: "Mood Coffee",
-    description:
-        "A coffee shop located in the heart of Troy, michigan. We serve a variety of coffee drinks, pastries, and light meals. Our cozy atmosphere is perfect for studying, working, or catching up with friends.",
+  title: 'Mood Coffee',
+  description:
+    'A coffee shop located in the heart of Troy, michigan. We serve a variety of coffee drinks, pastries, and light meals. Our cozy atmosphere is perfect for studying, working, or catching up with friends.',
 };
 
 export default function RootLayout({
-    children,
+  children,
 }: Readonly<{
-    children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-    return (
-        <html lang="en" className="bg-bg">
-            <body className="w-[100%] max-w-[1450px] mx-auto">{children}</body>
-        </html>
-    );
+  return (
+    <html lang="en" className={IBM.variable}>
+      <body>{children}</body>
+    </html>
+  );
 }
