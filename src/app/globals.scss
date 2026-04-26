@@ -1,0 +1,22 @@
+$color-primary: #7a4d3d;
+$color-secondary: #e6b663;
+$color-bg: #fbf7f0;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: $color-bg;
+}
+
+body {
+  width: 100dvw;
+  background-color: $color-secondary;
+  overflow-x: hidden;
+  font-family: var(--font-imb), monospace;
+}

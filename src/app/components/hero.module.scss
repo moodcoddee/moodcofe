@@ -1,0 +1,99 @@
+$color-primary: #7a4d3d;
+$color-secondary: #e6b663;
+$color-bg: #fbf7f0;
+$text-color: #1b0c01;
+
+.scene {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.hero {
+  position: relative;
+  height: 100dvh;
+  overflow: hidden;
+  background-color: $color-secondary;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(100, 1fr);
+}
+
+.title {
+  position: relative;
+  grid-column: 1 / -1;
+  grid-row: 1 / 50;
+  margin: 1rem 0 0 1rem;
+  width: fit-content;
+  h1 {
+    font-size: clamp(6.5rem, 18vw, 14rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.05em;
+    color: $text-color;
+    text-transform: uppercase;
+    mix-blend-mode: darken;
+  }
+
+  p {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    font-weight: 300;
+    text-align: right;
+    color: rgba($text-color, 0.7);
+    letter-spacing: -1px;
+  }
+}
+.buttonContainer {
+  position: relative;
+  grid-column: 1 / -1;
+  grid-row: 54 / 60;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  button {
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.75rem 2.5rem;
+    font-size: clamp(0.875rem, 2vw, 1.25rem);
+    outline: none;
+    border: none;
+    background-color: transparent;
+    border: 0.1rem solid $text-color;
+    border-radius: 2rem;
+    color: $text-color;
+    mix-blend-mode: darken;
+
+    &:hover {
+      background-color: $text-color;
+      color: $color-bg;
+      transition: all 0.3s ease;
+    }
+  }
+}
+.bottom {
+  position: relative;
+  grid-column: 1 / -1;
+  grid-row: 80 / -1;
+  margin-left: auto;
+  margin-top: auto;
+  width: fit-content;
+  .hoursText {
+    text-align: right;
+  }
+  p {
+    margin: 0 1rem 1rem 0;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    font-weight: 400;
+    color: rgba($text-color, 1);
+  }
+}
+.leftCorners {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  grid-column: 1 / -1;
+  border-bottom: 0.4rem solid $text-color;
+  border-left: 0.4rem solid $text-color;
+  width: clamp(8rem, 20vw, 18rem);
+  height: clamp(8rem, 20vw, 18rem);
+}

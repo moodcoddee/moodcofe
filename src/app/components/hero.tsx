@@ -1,55 +1,51 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-
+import dynamic from 'next/dynamic';
+import styles from './hero.module.scss';
+const CoffeeScene = dynamic(() => import('./CoffeeScene'), {
+  ssr: false,
+});
 const Hero = () => {
-    return (
-        <section className="h-dvh flex items-end justify-between flex-col">
-            <div className=" w-[22rem] pe-4 z-10">
-                <p className="text-2xl text-bg text-end ">
-                    Your daily dose of
-                    <br />
-                    caffeine and positivity
-                </p>
-            </div>
-
-            <Image
-                alt="Hero Image"
-                src="/images/coffee.webp"
-                width={900}
-                height={900}
-                className=" object-cover absolute top-0 left-0 w-full h-full"
-            ></Image>
-            <div className=" object-cover absolute top-0 left-0 w-full h-full bg-primary opacity-90"></div>
-            <div className="absolute top-0 left-0 flex items-end w-full h-full">
-                <div className="w-full mt-auto sticky bottom-60 rounded-xl flex items-center justify-center flex-col gap-2 flex-wrap z-10">
-                    {/* <Image
-                        alt="Hero Image"
-                        src="/images/logo.svg"
-                        width={200}
-                        height={200}
-                        className=" object-cover rounded-xl"
-                    ></Image> */}
-                    <h1 className="text-8xl text-secondary font-extrabold">
-                        Mood Coffee
-                    </h1>
-                    <div className="w-fit py-6 px-4 text-justify rounded-2xl bg-white/10 backdrop-blur-lg backdrop-saturate-150 shadow-lg border border-white/20">
-                        <p className="text-sm text-white">
-                            <strong className="text-lg block mb-2">
-                                Our opening hours are
-                            </strong>
-                            7 AM to 8 PM, Monday to Thursday
-                            <br />
-                            7 AM to 9 PM Friday
-                            <br />
-                            9 AM to 10 PM Saturday
-                            <br />9 AM to 8 PM Sunday
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    );
+  return (
+    <section className={styles.hero}>
+      <div className={styles.scene}>
+        <CoffeeScene />
+      </div>
+      <div className={styles.title}>
+        <h1>
+          MOOD
+          <br />
+          COFFEE
+        </h1>
+        <p>Your daily dose of caffeine and positivity</p>
+      </div>
+      <div className={styles.buttonContainer}>
+        <button
+          className={styles.button}
+          onClick={() => {
+            window.location.href = 'tel:2489405521';
+          }}
+        >
+          Call Us
+        </button>
+      </div>
+      <div className={styles.bottom}>
+        <div className={styles.hours}>
+          <p className={styles.hoursText}>Opening Hours</p>
+          <p>
+            Mon–Thu &nbsp;&nbsp;&nbsp;07AM – 09PM
+            <br />
+            Friday &nbsp;&nbsp;&nbsp;&nbsp;07AM – 10PM
+            <br />
+            Saturday &nbsp;&nbsp;09AM – 10PM
+            <br />
+            Sunday &nbsp;&nbsp;&nbsp;&nbsp;09AM – 09PM
+          </p>
+        </div>
+      </div>
+      <div className={styles.leftCorners}></div>
+    </section>
+  );
 };
 
 export default Hero;
