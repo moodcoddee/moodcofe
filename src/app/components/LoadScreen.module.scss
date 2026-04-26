@@ -1,0 +1,40 @@
+$color-bg: #e6b663;
+$color-text: #1b0c01;
+
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background-color: $color-bg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.wordmark {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: hidden;
+
+  span {
+    display: block;
+    font-size: clamp(3rem, 10vw, 7rem);
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    line-height: 1;
+    color: $color-text;
+    text-transform: uppercase;
+    transform: translateY(110%);
+  }
+}
+
+.bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 0.35rem;
+  width: 0%;
+  background-color: $color-text;
+}

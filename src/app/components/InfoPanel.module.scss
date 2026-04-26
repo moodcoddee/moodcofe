@@ -1,0 +1,44 @@
+$color-bg: #1b0c01;
+$color-text: #fbf7f0;
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  background-color: $color-bg;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  pointer-events: none;
+  opacity: 0;
+
+  &.visible {
+    pointer-events: all;
+  }
+}
+
+.logo {
+  object-fit: fill;
+  opacity: 0;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+
+  p {
+    color: $color-text;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    font-weight: 200;
+    opacity: 0;
+  }
+}
+
+.copyright {
+  font-size: 0.8rem !important;
+  color: rgba($color-text, 0.5) !important;
+}

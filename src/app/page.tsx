@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import Footer from "./components/footer";
 import Hero from "./components/hero";
 import { IBM_Plex_Mono } from "next/font/google";
@@ -15,6 +16,18 @@ function App() {
             <Footer />
         </main>
     );
+=======
+import Hero from './components/hero';
+import LoadScreen from './components/LoadScreen';
+
+function App() {
+  return (
+    <main>
+      <LoadScreen />
+      <Hero />
+    </main>
+  );
+>>>>>>> Stashed changes
 }
 
 export default App;
