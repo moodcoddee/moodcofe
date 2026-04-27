@@ -80,6 +80,7 @@ const Hero = () => {
     { scope: containerRef }
   );
 
+  const [beanSpeed, setBeanSpeed] = useState(0.6);
   const storeOpen = isStoreOpen();
 
   return (
@@ -93,7 +94,21 @@ const Hero = () => {
         </span>
       </div>
       <div className={styles.scene}>
-        <CoffeeScene />
+        <CoffeeScene speed={beanSpeed} />
+      </div>
+      <div className={styles.speedControl}>
+        <span className={styles.speedLabel}>SPEED</span>
+        <input
+          type="range"
+          min={0.1}
+          max={3}
+          step={0.05}
+          value={beanSpeed}
+          onChange={(e) => setBeanSpeed(parseFloat(e.target.value))}
+          className={styles.speedSlider}
+          aria-label="Bean speed"
+        />
+        <span className={styles.speedValue}>{beanSpeed.toFixed(1)}x</span>
       </div>
       <InfoPanel open={infoOpen} onClose={() => setInfoOpen(false)} />
       <div className={styles.title}>

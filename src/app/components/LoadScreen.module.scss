@@ -12,6 +12,13 @@ $color-text: #1b0c01;
   pointer-events: none;
 }
 
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
 .wordmark {
   display: flex;
   flex-direction: column;
@@ -20,7 +27,7 @@ $color-text: #1b0c01;
 
   span {
     display: block;
-    font-size: clamp(3rem, 10vw, 7rem);
+    font-size: clamp(5rem, 10vw, 12rem);
     font-weight: 900;
     letter-spacing: -0.05em;
     line-height: 1;
@@ -30,11 +37,27 @@ $color-text: #1b0c01;
   }
 }
 
-.bar {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 0.35rem;
-  width: 0%;
-  background-color: $color-text;
+.gauge {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.gaugeSvg {
+  width: clamp(180px, 40vw, 340px);
+  overflow: visible;
+}
+
+.moodTag {
+  margin-top: 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  color: $color-text;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(4px);
 }
