@@ -1,6 +1,6 @@
-$color-secondary: #e6b663;
+$color-secondary: #cea767;
 $color-bg: #fbf7f0;
-$text-color: #1b0c01;
+$text-color: #180f0b;
 
 .overlay {
   position: fixed;
@@ -45,7 +45,7 @@ $text-color: #1b0c01;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #1b0c01;
+  background-color: $text-color;
 }
 .logo {
   width: 8rem;
