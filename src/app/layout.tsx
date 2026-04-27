@@ -11,7 +11,7 @@ const IBM = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: 'Mood Coffee',
   description:
-    'A coffee shop located in the heart of Troy, michigan. We serve a variety of coffee drinks, pastries, and light meals. Our cozy atmosphere is perfect for studying, working, or catching up with friends.',
+    'A coffee shop located in the heart of Troy, Michigan. We serve a variety of coffee drinks, pastries, and light meals. Our cozy atmosphere is perfect for studying, working, or catching up with friends.',
 };
 
 export default function RootLayout({

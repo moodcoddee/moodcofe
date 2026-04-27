@@ -7,6 +7,28 @@ import { useRef, useState } from 'react';
 import InfoPanel from './InfoPanel';
 import styles from './hero.module.scss';
 
+function isStoreOpen(): boolean {
+  const tz = 'America/Detroit';
+  const now = new Date();
+  const parts = new Intl.DateTimeFormat('en-US', {
+    timeZone: tz,
+    weekday: 'short',
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: false,
+  }).formatToParts(now);
+
+  const weekday = parts.find((p) => p.type === 'weekday')?.value;
+  const h = parseInt(parts.find((p) => p.type === 'hour')?.value ?? '0', 10);
+  const m = parseInt(parts.find((p) => p.type === 'minute')?.value ?? '0', 10);
+  const hour = h + m / 60;
+
+  if (weekday === 'Fri') return hour >= 7 && hour < 22;
+  if (weekday === 'Sat') return hour >= 9 && hour < 22;
+  if (weekday === 'Sun') return hour >= 9 && hour < 21;
+  return hour >= 7 && hour < 21; // Mon–Thu
+}
+
 const CoffeeScene = dynamic(() => import('./CoffeeScene'), {
   ssr: false,
 });
@@ -19,7 +41,10 @@ const Hero = () => {
 
   useGSAP(
     () => {
-      const tl = gsap.timeline({ defaults: { ease: 'power3.out' }, delay: 1.9 });
+      const tl = gsap.timeline({
+        defaults: { ease: 'power3.out' },
+        delay: 1.9,
+      });
 
       tl.from(`.${styles.title} h1`, {
         y: 80,
@@ -55,18 +80,22 @@ const Hero = () => {
     { scope: containerRef }
   );
 
+  const storeOpen = isStoreOpen();
+
   return (
     <section className={styles.hero} ref={containerRef}>
+      <div className={styles.navDot}>
+        <span
+          className={`${styles.dot} ${storeOpen ? styles.dotOpen : styles.dotClosed}`}
+        />
+        <span className={styles.navDotLabel}>
+          {storeOpen ? 'Open' : 'Closed'}
+        </span>
+      </div>
       <div className={styles.scene}>
         <CoffeeScene />
       </div>
-      <button
-        className={styles.infoButton}
-        onClick={() => setInfoOpen((o) => !o)}
-      >
-        {infoOpen ? 'CLOSE' : 'INFO'}
-      </button>
-      <InfoPanel open={infoOpen} />
+      <InfoPanel open={infoOpen} onClose={() => setInfoOpen(false)} />
       <div className={styles.title}>
         <h1>
           MOOD
@@ -84,6 +113,12 @@ const Hero = () => {
         >
           Call Us
         </button>
+        <button
+          className={styles.infoButton}
+          onClick={() => setInfoOpen((o) => !o)}
+        >
+          {infoOpen ? 'CLOSE' : 'INFO'}
+        </button>
       </div>
       <div className={styles.bottom}>
         <div className={styles.hours}>
@@ -99,7 +134,29 @@ const Hero = () => {
           </p>
         </div>
       </div>
-      <div className={styles.leftCorners}></div>
+      <div className={styles.leftCorners}>
+        <a
+          href="https://www.facebook.com/profile.php?id=61577057832400&rdid=gRJjpDSmdrVBXoq0&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F18sNmkDehn%2F#"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          &#9679;FACEBOOK
+        </a>
+        <a
+          href="https://www.instagram.com/moodcoffeetroy?igsh=azRvZnU2dW12azRm"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          &#9679;INSTAGRAM
+        </a>
+        <a
+          href="https://www.tiktok.com/@moodcoffeetroy?_r=1&_t=ZP-95s6fIz07wd"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          &#9679;TIKTOK
+        </a>
+      </div>
     </section>
   );
 };
