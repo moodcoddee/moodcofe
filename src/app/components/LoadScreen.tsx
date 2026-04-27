@@ -23,7 +23,7 @@ const LoadScreen = () => {
       ) ?? []
     );
 
-    gsap.set(arcFillRef.current, { strokeDashoffset: HALF_CIRC });
+    gsap.set(arcFillRef.current, { strokeDashoffset: HALF_CIRC, opacity: 0 });
     gsap.set(smileRef.current, { strokeDashoffset: SMILE_LEN, opacity: 0 });
 
     const tl = gsap.timeline({ paused: true });
@@ -32,6 +32,7 @@ const LoadScreen = () => {
       .to(
         arcFillRef.current,
         {
+          opacity: 1,
           strokeDashoffset: 0,
           duration: 1.4,
           ease: 'power2.inOut',
@@ -80,13 +81,13 @@ const LoadScreen = () => {
 
         <div className={styles.gauge}>
           <svg viewBox="16 16 168 92" className={styles.gaugeSvg} aria-hidden>
-            <path
+            {/* <path
               d={arcPath}
               fill="none"
               stroke="rgba(27,12,1,0.12)"
               strokeWidth="8"
               strokeLinecap="round"
-            />
+            /> */}
             <path
               ref={arcFillRef}
               d={arcPath}
@@ -96,6 +97,7 @@ const LoadScreen = () => {
               strokeLinecap="round"
               strokeDasharray={HALF_CIRC}
               strokeDashoffset={HALF_CIRC}
+              style={{ opacity: 0 }}
             />
             <path
               ref={smileRef}
